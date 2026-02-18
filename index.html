@@ -1,0 +1,32 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile Site</title>
+<style>
+body { margin: 0; font-family: sans-serif; color: white; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; }
+.background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url("photo.jpg") center/cover no-repeat; filter: blur(25px) brightness(0.55); z-index: -2; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); z-index: -1; }
+.screen { display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; }
+#screen-error { display: flex; cursor: pointer; }
+.error-icon { font-size: 120px; color: #ffd84a; }
+.error-text { margin-top: 20px; font-size: 20px; color: #ffd84a; }
+#screen-main { display: none; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+.avatar { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; box-shadow: 0 6px 25px rgba(0,0,0,0.5); }
+.glass-btn { padding: 15px 40px; font-size: 18px; color: white; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; backdrop-filter: blur(10px); cursor: pointer; opacity: 0; transform: translateY(20px); transition: 0.5s; }
+</style>
+</head>
+<body>
+<div class="background"></div><div class="overlay"></div>
+<div id="screen-error" class="screen"><div class="error-icon">⚠</div><div class="error-text">Произошла ошибка<br>Нажмите, чтобы продолжить</div></div>
+<div id="screen-main" class="screen"><img src="photo.jpg" class="avatar"><button class="glass-btn" id="tgBtn">Связаться 💬</button></div>
+<script>
+const audio = new Audio("music.mp3"); audio.loop = true;
+const sErr = document.getElementById("screen-error"); const sMain = document.getElementById("screen-main"); const btn = document.getElementById("tgBtn");
+sErr.onclick = () => { sErr.style.display = "none"; sMain.style.display = "flex"; audio.play(); btn.style.opacity = "1"; btn.style.transform = "translateY(0)"; };
+btn.onclick = () => { window.location.href = "https://t.me/biskvit701"; };
+</script>
+</body>
+</html>
